@@ -1,6 +1,6 @@
 # TA-sans_isc
 
-This app  was created to allow  Security team to query SANS ISC APIs as an adaptive response action.  These APIs allow you to progrmatically query fields and provide additional context whilst you are threat hunting.
+This app was created to allow Security team to query SANS ISC APIs as an adaptive response action.  These APIs allow you to programmatically query fields and provide additional context whilst you are threat hunting.
 
 Subscribe to the Stormcenter Podcast!
 ITunes
@@ -191,3 +191,5 @@ Example Output - ASN
 <updated>2017-07-26 03:22:09</updated>
 </data>
 </asnum>
+
+
