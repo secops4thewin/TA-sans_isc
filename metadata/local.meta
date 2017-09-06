@@ -1,0 +1,30 @@
+[props/source%3A%3A...sans_ip_lookup_modalert.log%2A]
+owner = admin
+version = 6.6.0
+modtime = 1504302523.327559000
+
+[props/source%3A%3A...sans_port_lookup_modalert.log%2A]
+owner = admin
+version = 6.6.0
+modtime = 1504304086.575144000
+
+[props/source%3A%3A...sans_asn_lookup_modalert.log%2A]
+owner = admin
+version = 6.6.0
+modtime = 1504311242.376441000
+
+[app/ui]
+version = 6.6.0
+modtime = 1504507894.824352000
+
+[app/launcher]
+version = 6.6.0
+modtime = 1504507894.857047000
+
+[app/package/check_for_updates]
+version = 6.6.0
+modtime = 1504507894.858435000
+
+[ta_sans_isc_settings/additional_parameters]
+version = 6.6.0
+modtime = 1504430921.417301000
