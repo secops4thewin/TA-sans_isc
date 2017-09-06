@@ -22,6 +22,9 @@ If you have a proxy configure it under the proxy settings
 If you want to change logging settings click logging
 Click Add-On Settings - Specify the index name that you created before
 
+Have issues?
+Submit to https://github.com/secops4thewin/TA-sans_isc
+
 Example Output - IP
 <ip>
  <number>1.85.2.119</number>
