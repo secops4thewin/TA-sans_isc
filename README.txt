@@ -1,4 +1,5 @@
-# TA-sans_isc
+SANS ISC Adaptive Response Action
+
 
 This app was created to allow Security team to query SANS ISC APIs as an adaptive response action.  These APIs allow you to programmatically query fields and provide additional context whilst you are threat hunting.
 
@@ -23,7 +24,13 @@ If you want to change logging settings click logging
 Click Add-On Settings - Specify the index name that you created before
 
 Have issues?
+
+Requires Splunk Common Information Model App if you do not Enterprise Security
+https://splunkbase.splunk.com/app/1621/
+
 Submit to https://github.com/secops4thewin/TA-sans_isc
+
+The use of the APIs of SANS Internet Storm Center are subject to the terms and conditions set out by SANS Internet Storm Center
 
 Example Output - IP
 <ip>
@@ -191,5 +198,3 @@ Example Output - ASN
 <updated>2017-07-26 03:22:09</updated>
 </data>
 </asnum>
-
-
