@@ -20,7 +20,7 @@ def query_url(helper, port_number, themethod):
     if not pattern.match(port_number):
         helper.log_error('Invalid Port Number')
     #Create the URI String that looks for the port
-    uri = 'https://isc.sans.edu/api/port/' + port_number
+    uri = 'https://isc.sans.edu/api/port/{}?json'.format(port_number)
     #Build HTTP Connection
     http = helper.build_http_connection(helper.proxy, timeout=30)
   
@@ -35,11 +35,10 @@ def query_url(helper, port_number, themethod):
         helper.log_error('Failed to query SANS. Port={}, HTTP Error={}, content={}'.format( port_number, resp_headers.status, content))
     else:
         #Grab from the Second Row onwards in order to get rid of data that is not useful and join the rows with a space
-        content = str(" ".join(content.split("\n")[1:]))
         #Log this data to Splunk
         helper.log_info('Successfully queried Port={}, content={}'.format(port_number, content))
         #Return the Content
-        return content
+        return json.dumps({'port':json.loads(content)})
 
 def process_event(helper, *args, **kwargs):
     #Import Necessary Modules
