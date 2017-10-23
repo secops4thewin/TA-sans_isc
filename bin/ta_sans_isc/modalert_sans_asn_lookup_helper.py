@@ -19,7 +19,7 @@ def query_url(helper, asn_number, themethod):
     if not pattern.match(asn_number):
         helper.log_error('Invalid ASN Number')
     #Create the URI String that looks for the ASN
-    uri = 'https://isc.sans.edu/api/asnum/100/' + asn_number
+    uri = 'https://isc.sans.edu/api/asnum/100/{}?json'.format(asn_number)
     
     #Build HTTP Connection
     http = helper.build_http_connection(helper.proxy, timeout=30)
@@ -36,11 +36,17 @@ def query_url(helper, asn_number, themethod):
         helper.log_error('Failed to query SANS. ASN={}, HTTP Error={}, content={}'.format( asn_number, resp_headers.status, content))
     else:
         #Grab from the Second Row onwards in order to get rid of data that is not useful and join the rows with a space
-        content = str(" ".join(content.split("\n")[1:]))
         #Log this data to Splunk
         helper.log_info('Successfully queried ASN={}, content={}'.format(asn_number, content))
+        contentOut = []
+        contentJSON = json.loads(content) 
+        helper.log_info("content leng:{}".format(len(contentOut)))
+        for event in contentJSON:
+            tempContent = { key:value for (key,value) in event.items() if value is not None }
+            contentOut.append(json.dumps({'asn':tempContent}))
         #Return the Content
-        return content
+        helper.log_info("ContentOUT: {}".format(contentOut))
+        return contentOut
 
 def process_event(helper, *args, **kwargs):
     #Import Necessary Modules
@@ -63,8 +69,8 @@ def process_event(helper, *args, **kwargs):
     
     #call the query URL REST Endpoint and pass the url
     content = query_url(helper, asn, 'GET')  
-
-    #write the response returned to splunk index
-    helper.addevent(content, sourcetype="sansisc:asn")
+    for event in content:
+        #write the response returned to splunk index
+        helper.addevent(event, sourcetype="sansisc:asn")
     helper.writeevents(index=str(index), host="arf", source="sansisc")
     return 0

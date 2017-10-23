@@ -19,7 +19,7 @@ def query_url(helper, ip_lookup, themethod):
         helper.log_error('Invalid IP Address')
     
     #Create the URI String that looks for the IP Address
-    uri = 'https://isc.sans.edu/api/ip/' + ip_lookup
+    uri = 'https://isc.sans.edu/api/ip/{}?json'.format(ip_lookup)
     #Build HTTP Connection
     http = helper.build_http_connection(helper.proxy, timeout=30)
   
@@ -35,11 +35,13 @@ def query_url(helper, ip_lookup, themethod):
         helper.log_error('Failed to query SANS. IP={}, HTTP Error={}, content={}'.format( ip_lookup, resp_headers.status, content))
     else:
         #Grab from the Second Row onwards in order to get rid of data that is not useful
-        content = content.split("\n")[1]
+        #content = content.split("\n")[1]
         #Log this data to Splunk
         helper.log_info('Successfully queried IP={}, content={}'.format(ip_lookup, content))
         #Return the Content
-        return content
+        contentOut = {}
+        contentOut['ip'] = { key:value for (key,value) in json.loads(content).get('ip').items() if value is not None } 
+        return json.dumps(contentOut)
 
 def process_event(helper, *args, **kwargs):
     #Import Necessary Modules

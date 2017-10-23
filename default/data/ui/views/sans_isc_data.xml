@@ -1,0 +1,23 @@
+<form>
+  <label>SANS ISC Data</label>
+  <fieldset submitButton="false">
+    <input type="text" token="sans_value" searchWhenChanged="true">
+      <label>SANS Value</label>
+      <default>*</default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <title>SANS ISC Data</title>
+      <event>
+        <title>Search Results</title>
+        <search>
+          <query>`sans_index` source=sansisc (ip.number=$sans_value$ OR asn.number=$sans_value$ OR port.number=$sans_value$)</query>
+          <earliest>$earliest$</earliest>
+          <latest>$latest$</latest>
+        </search>
+        <option name="list.drilldown">none</option>
+      </event>
+    </panel>
+  </row>
+</form>
