@@ -71,6 +71,6 @@ def process_event(helper, *args, **kwargs):
     content = query_url(helper, asn, 'GET')  
     for event in content:
         #write the response returned to splunk index
-        helper.addevent(event, sourcetype="sansisc:asn")
+        helper.addevent(event, sourcetype="sansisc:asn_json")
     helper.writeevents(index=str(index), host="arf", source="sansisc")
     return 0

@@ -62,6 +62,6 @@ def process_event(helper, *args, **kwargs):
     content = query_url(helper, port, 'GET')  
 
     #write the response returned to splunk index
-    helper.addevent(content, sourcetype="sansisc:port")
+    helper.addevent(content, sourcetype="sansisc:port_json")
     helper.writeevents(index=str(index), host="arf", source="sansisc")
     return 0

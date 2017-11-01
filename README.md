@@ -1,4 +1,4 @@
-SANS ISC Adaptive Response Action
+# SANS ISC Adaptive Response Action
 
 
 This app was created to allow Security team to query SANS ISC APIs as an adaptive response action.  These APIs allow you to programmatically query fields and provide additional context whilst you are threat hunting.
@@ -14,7 +14,7 @@ The API Reference is located at https://isc.sans.edu/api/
 
 The three APIs that you can query are IP, Port and ASN
 
-Steps to install
+## Steps to install
 Download from Splunkbase 
 Create a new index if need be.  In my examples I created a new index called osint_data
 Install the App
@@ -22,9 +22,9 @@ After installation go to https://your.splunk.address/en-GB/app/TA-sans_isc/confi
 If you have a proxy configure it under the proxy settings
 If you want to change logging settings click logging
 Click Add-On Settings - Specify the index name that you created before
-Configure the index macro `sans_index` by copying macros.conf to a local folder within the app. This should be the index you configured in teh step above.
+Configure the index macro `sans_index` by copying macros.conf to a local folder within the app. This should be the index you configured in the step above.
 
-Have issues?
+## Have issues?
 
 Requires Splunk Common Information Model App if you do not Enterprise Security
 https://splunkbase.splunk.com/app/1621/
