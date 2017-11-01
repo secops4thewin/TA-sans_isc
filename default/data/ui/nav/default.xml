@@ -1,5 +1,5 @@
 <nav search_view="search" color="#297ba5">
-<view name="configuration">
+<view name="configuration"/>
 <view name="search" label="Search"/>
 <view name="sans_isc_data" default='true' />
 </nav>
